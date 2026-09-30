@@ -64,7 +64,12 @@ fun DocenteLoginScreen(
                 value = usuario,
                 onValueChange = { usuario = it },
                 label = { Text("Usuario: docente.prueba") },
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedTextColor = Color.Black,
+                    unfocusedTextColor = Color.Black
+                )
+
             )
 
             OutlinedTextField(
@@ -73,7 +78,11 @@ fun DocenteLoginScreen(
                 label = { Text("Contraseña") },
                 modifier = Modifier.fillMaxWidth(),
                 visualTransformation = PasswordVisualTransformation(),
-                singleLine = true
+                singleLine = true,
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedTextColor = Color.Black,
+                    unfocusedTextColor = Color.Black
+                )
             )
 
             Text(

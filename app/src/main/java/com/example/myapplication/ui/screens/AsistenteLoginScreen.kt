@@ -64,7 +64,11 @@ fun AsistenteLoginScreen(
                 value = usuario,
                 onValueChange = { usuario = it },
                 label = { Text("Usuario: asistente.prueba") },
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedTextColor = Color.Black,
+                    unfocusedTextColor = Color.Black
+                )
             )
 
             OutlinedTextField(
@@ -73,7 +77,11 @@ fun AsistenteLoginScreen(
                 label = { Text("Contraseña") },
                 modifier = Modifier.fillMaxWidth(),
                 visualTransformation = PasswordVisualTransformation(),
-                singleLine = true
+                singleLine = true,
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedTextColor = Color.Black,
+                    unfocusedTextColor = Color.Black
+            )
             )
 
             Text(
