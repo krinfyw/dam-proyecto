@@ -8,6 +8,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.myapplication.navigation.Screen
 import com.example.myapplication.ui.screens.AsistenteLoginScreen
+import com.example.myapplication.ui.screens.CatalogoActividades
 import com.example.myapplication.ui.screens.DocenteLoginScreen
 import com.example.myapplication.ui.screens.HomeScreen
 import com.example.myapplication.ui.theme.MyApplicationTheme
@@ -33,7 +34,9 @@ class MainActivity : ComponentActivity() {
                     composable(Screen.AsistenteLogin.route) {
                         AsistenteLoginScreen(navController = navController)
                     }
-
+                    composable(Screen.DocenteDashboard.route){
+                        CatalogoActividades(navController)
+                    }
                 }
             }
         }

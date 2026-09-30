@@ -9,12 +9,14 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.myapplication.navigation.Screen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -23,6 +25,7 @@ fun DocenteLoginScreen(
 ) {
     var usuario by remember { mutableStateOf("") }
     var contrasena by remember { mutableStateOf("") }
+    var mostrarError by remember { mutableStateOf(false) }
 
     Column(
         modifier = Modifier
@@ -92,11 +95,26 @@ fun DocenteLoginScreen(
                 fontSize = 10.sp
             )
 
-            Spacer(modifier = Modifier.height(24.dp))
+            if (mostrarError){
+                Text(
+                    text = "Credenciales incorrectas. Usa docente.prueba / 1234",
+                    color = MaterialTheme.colorScheme.error,
+                    style = MaterialTheme.typography.bodySmall
+                )
+            } else{
+                Spacer(modifier = Modifier.height(24.dp))
+            }
 
             Button(
                 onClick = {
-                    navController.navigate("docente_dashboard")
+                    if (usuario == "docente.prueba" && contrasena == "1234") {
+                        mostrarError = false
+                        navController.navigate(Screen.DocenteDashboard.route) {
+                            popUpTo(Screen.DocenteLogin.route) { inclusive = true }
+                        }
+                    } else {
+                        mostrarError = true
+                    }
                 },
                 modifier = Modifier
                     .fillMaxWidth()
