@@ -15,6 +15,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.myapplication.navigation.Screen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -29,8 +30,6 @@ fun HomeScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Spacer(modifier = Modifier.height(40.dp))
-
         Row(
             modifier = Modifier.wrapContentWidth(),
             horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -85,7 +84,7 @@ fun HomeScreen(
         ) {
             Button(
                 onClick = {
-                    // TODO: Navegación a pantalla Docente/UTP
+                    navController.navigate(Screen.DocenteLogin.route)
                 },
                 modifier = Modifier
                     .fillMaxWidth()
@@ -98,7 +97,7 @@ fun HomeScreen(
 
             Button(
                 onClick = {
-                    // TODO: Navegación a pantalla Asistente de aula
+                    navController.navigate(Screen.AsistenteLogin.route)
                 },
                 modifier = Modifier
                     .fillMaxWidth()
